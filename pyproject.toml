@@ -1,0 +1,10 @@
+[project]
+name = "ai-customer-support"
+version = "0.1.0"
+description = "AI-powered customer support API built with FastAPI and Claude"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=2.6.0",
+    "fastapi[standard]>=0.162.2",
+]
