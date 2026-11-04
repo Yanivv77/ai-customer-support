@@ -25,3 +25,8 @@ htmlcov/
 .vscode/
 .idea/
 .DS_Store
+
+
+credentials.json
+node_modules/
+dashboard/dist/
