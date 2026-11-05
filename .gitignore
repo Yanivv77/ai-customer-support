@@ -30,3 +30,4 @@ htmlcov/
 credentials.json
 node_modules/
 dashboard/dist/
+client_secret*.json
