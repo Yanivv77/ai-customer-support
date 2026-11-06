@@ -114,6 +114,6 @@ def format_thread(thread: dict, own_address: str) -> str:
     parts = [f"Subject: {first.get('subject', '')}"]
     for message in thread["messages"]:
         sender = get_headers(message).get("from", "")
-        role = "Harbor & Pine support" if own_address.lower() in sender.lower() else "Customer"
+        role = "support" if own_address.lower() in sender.lower() else "Customer"
         parts.append(f"{role} ({sender}):\n{strip_quoted(get_body(message))}")
     return "\n\n".join(parts)
