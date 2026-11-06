@@ -1,0 +1,8 @@
+{
+  "name": "ai-customer-support-tooling",
+  "private": true,
+  "description": "Dev tooling only (Supabase CLI). The app itself is Python.",
+  "devDependencies": {
+    "supabase": "^3.1.0"
+  }
+}
