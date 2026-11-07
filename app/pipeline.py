@@ -13,7 +13,15 @@ ACKNOWLEDGEMENT = """Hi,
 
 Thanks for your email. We received your message and will get back to you soon.
 
-Support"""
+EBikes IL Support
+
+---
+
+שלום,
+
+תודה על פנייתך. קיבלנו את ההודעה ונחזור אליך בהקדם.
+
+צוות EBikes IL"""
 
 
 def handle_message(gmail: Gmail, message_id: str) -> None:
