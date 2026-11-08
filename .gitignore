@@ -31,3 +31,6 @@ credentials.json
 node_modules/
 dashboard/dist/
 client_secret*.json
+
+# Private server notes
+VPS_GUIDE.md
