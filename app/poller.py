@@ -1,7 +1,7 @@
 import logging
 import time
 
-from app.config import settings
+from app.config import POLL_INTERVAL_SECONDS
 from app.gmail import Gmail
 from app.pipeline import handle_message
 
@@ -22,7 +22,7 @@ def poll_once() -> int:
 
 
 def main() -> None:
-    logger.info("Polling every %s seconds", settings.poll_interval_seconds)
+    logger.info("Polling every %s seconds", POLL_INTERVAL_SECONDS)
     while True:
         try:
             count = poll_once()
@@ -31,7 +31,7 @@ def main() -> None:
                 logger.info("Handled %s new messages", count)
         except Exception:
             logger.exception("Poll failed")
-        time.sleep(settings.poll_interval_seconds)
+        time.sleep(POLL_INTERVAL_SECONDS)
 
 
 if __name__ == "__main__":

@@ -4,6 +4,16 @@ We sell two e-bikes. Both have a 250 W rear hub motor and a removable 36 V batte
 - Carmel C1 (model EB-C1): city bike, three frame sizes. Range up to about 50 km per charge, depending on rider weight, hills, and assist level.
 - Carmel F1 (model EB-F1): foldable bike, one frame size, for mixed rides with public transport.
 The model code is on the sticker under the frame and on the box label.
+## Prices and which bike to choose
+Prices in NIS, including VAT, for new bikes:
+- Carmel F1 (EB-F1), foldable: 3,990 NIS. This is our lowest-priced e-bike.
+- Carmel C1 (EB-C1), city bike: 4,990 NIS.
+Spare parts: replacement battery 890 NIS, charger CH-36 190 NIS, front or rear light 60 NIS each.
+How to recommend:
+- Customer wants the cheapest e-bike, or has a budget up to about 4,000 NIS: the F1.
+- Customer rides mainly in the city, or wants the longer range of up to about 50 km: the C1.
+- Customer takes the bike on a train or bus, or has little storage space: the F1.
+Prices are the listed prices today. Never promise a discount, a sale, a coupon, or a price match. Never state delivery costs or availability here. A colleague answers questions about discounts, payment plans, stock, and anything not listed above.
 ## Frame size for the C1
 Pick the size by rider height.
 - S: 150 to 164 cm.
