@@ -12,6 +12,9 @@ class Classification(BaseModel):
     battery_safety: bool = Field(
         description="True when a battery is swollen, hot, leaking, smoking, or smells of burning"
     )
+    uncovered_topic: bool = Field(
+        default=False, description="True when the message asks about a topic none of the sections cover"
+    )
     reason: str = Field(description="One sentence explaining the classification")
     acknowledgement: str = Field(
         description="Short note to the customer, in their language, that a colleague replies"
@@ -40,6 +43,13 @@ class AgentReply(BaseModel):
     reply: str = Field(description="The email to the customer, plain text")
     reasoning: str = Field(description="Which knowledge base entries you used, and why")
     enough_information: bool = Field(description="True when the knowledge base answers the question")
+    missing_information: str | None = Field(
+        default=None,
+        description=(
+            "When enough_information is false: the fact the knowledge base is missing, as one short "
+            "sentence, e.g. 'Whether the F1 can be ridden in heavy rain'"
+        ),
+    )
     promises_an_action: bool = Field(
         description="True when the reply promises a refund, shipment, replacement, date, or call"
     )
@@ -54,3 +64,6 @@ class Decision(BaseModel):
     reply: str
     reason: str
     proposed_action: str | None = None
+    knowledge_gap: str | None = Field(
+        default=None, description="Set when the email was handed over because the knowledge base lacks the answer"
+    )

@@ -2,6 +2,7 @@ import logging
 import re
 
 from pydantic_ai import Agent, ModelRetry, RunContext
+from pydantic_ai.messages import ModelResponse, ToolCallPart
 
 from app import db
 from app.ai.schemas import AgentReply
@@ -17,7 +18,8 @@ Steps:
 1. Call get_section for "brand-and-tone" and for "escalation-rules".
 2. Call get_section for the section the classifier picked. Call list_sections if you need another.
 3. Answer only with facts from those sections. If they do not answer the question,
-   set enough_information to false.
+   set enough_information to false, and write in missing_information which fact is missing.
+   Do this also when you set action to escalate.
 4. When the customer reports a problem with an e-bike or a battery, fill in issue.
    Ask for the order number, the model, and the display error code when they are missing.
    For a display error or a battery that will not hold a charge, explain the checks from the
@@ -62,6 +64,17 @@ def check_reply(ctx: RunContext[None], output: AgentReply) -> AgentReply:
     return output
 
 
-def write_reply(thread: str, section: str) -> AgentReply:
+def write_reply(thread: str, section: str) -> tuple[AgentReply, list[str]]:
+    """The agent's answer, and the knowledge base sections it read to write it."""
     prompt = f"Section picked by the classifier: {section}\n\n{thread}"
-    return support_agent.run_sync(prompt).output
+    result = support_agent.run_sync(prompt)
+    sections = []
+    for message in result.all_messages():
+        if not isinstance(message, ModelResponse):
+            continue
+        for part in message.parts:
+            if isinstance(part, ToolCallPart) and part.tool_name == "get_section":
+                name = part.args_as_dict().get("section")
+                if isinstance(name, str) and name not in sections:
+                    sections.append(name)
+    return result.output, sections
