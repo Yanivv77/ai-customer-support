@@ -54,6 +54,13 @@ class Gmail:
             userId="me", id=message_id, body={"addLabelIds": [self.label_ids[name]]}
         ).execute()
 
+    def set_thread_label(self, thread_id: str, name: str, present: bool) -> None:
+        """Add the label to every message in the thread, or take it off."""
+        key = "addLabelIds" if present else "removeLabelIds"
+        self.users.threads().modify(
+            userId="me", id=thread_id, body={key: [self.label_ids[name]]}
+        ).execute()
+
     def is_escalated(self, thread: dict) -> bool:
         label_id = self.label_ids[ESCALATED_LABEL]
         return any(label_id in m.get("labelIds", []) for m in thread["messages"])
