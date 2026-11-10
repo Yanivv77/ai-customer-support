@@ -53,6 +53,20 @@ src/pages/            one file per page
 src/components/       shell, charts, shared pieces
 ```
 
+## Demo video scene
+
+`stage/` holds a scripted animation of the panel for recording, built with the
+[Stageshow](https://github.com/benjitaylor/skills/tree/main/stageshow) kit
+(copied into `stage/kit/`, MIT). It is an illustration, not the live app.
+
+```bash
+npm run dev
+# open http://localhost:5173/stage/        (with a Replay button)
+# open http://localhost:5173/stage/?clean  (no button, for recording)
+```
+
+The story and its checks are in `stage/support-demo/REHEARSAL.md`.
+
 ## Deploy
 
 The Dockerfile in the project root builds this folder and the API serves it at `/`. Apply the database migrations in `supabase/migrations` before deploying a version that needs them.

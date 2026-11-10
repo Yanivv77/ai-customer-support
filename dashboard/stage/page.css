@@ -1,0 +1,36 @@
+html,
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: "Geist Variable", system-ui, sans-serif;
+}
+
+.page {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  gap: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.page__scene {
+  width: min(100%, 1600px);
+}
+
+.page__replay {
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid #d5dbe4;
+  border-radius: 6px;
+  background: #fff;
+  color: #1c2330;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.page__replay:focus-visible {
+  outline: 2px solid #1f5fae;
+  outline-offset: 2px;
+}

@@ -1,0 +1,477 @@
+/* EBikes IL's support panel, after the dashboard's own tokens: cool light
+   grays, one blue accent (#1f5fae), Geist, square-ish 6px radii, green for
+   answered and amber for "needs a person". */
+.sp-stage .ss-stage {
+  --gutter: 36px;
+  --ss-well: #e9edf3;
+  --ss-canvas: #f3f5f8;
+  --ss-chrome: #fbfbfd;
+  --ss-surface: #ffffff;
+  --ss-raised: #ffffff;
+  --ss-line: #e1e5ec;
+  --ss-text: #5d6675;
+  --ss-text-strong: #1c2330;
+  --ss-text-faint: #9aa3b1;
+  --ss-icon: #6b7484;
+  --ss-icon-faint: #b6bdc8;
+  --ss-accent-soft: rgba(31, 95, 174, 0.12);
+  --ss-radius-sm: 4px;
+  --ss-radius-md: 6px;
+  --ss-radius-lg: 8px;
+
+  --sp-nav-active: #e7ecf4;
+  --sp-selected: #eef3fa;
+  --sp-ai: #f2f6fc;
+  --sp-ai-line: #d6e2f2;
+  --sp-ok: #1f8a5b;
+  --sp-bleed: 62px;
+  --sp-warn: #b86a14;
+
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--ss-well);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  font-family: "Geist Variable", system-ui, -apple-system, sans-serif;
+}
+
+.sp-icon {
+  flex: none;
+  color: var(--ss-icon);
+}
+
+.sp-icon--on {
+  color: var(--ss-accent);
+}
+
+/* ---- Window: wide hero, a column on the left for the stat, off right and bottom ---- */
+
+.sp-window {
+  position: absolute;
+  top: var(--gutter);
+  left: 150px;
+  width: 980px;
+  height: 660px;
+  background: var(--ss-chrome);
+  box-shadow: var(--ss-shadow-hero);
+}
+
+.sp-window .ss-window__side {
+  border-right: 1px solid var(--ss-line);
+  background: var(--ss-chrome);
+}
+
+.sp-window .ss-window__bar {
+  gap: 12px;
+  background: var(--ss-surface);
+}
+
+/* ---- Sidebar ---- */
+
+.sp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 4px 12px 0;
+}
+
+.sp-brand {
+  display: grid;
+  gap: 6px;
+  padding: 0 8px;
+}
+
+.sp-brand__name {
+  color: var(--ss-text-strong);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sp-group {
+  display: grid;
+  gap: 2px;
+}
+
+.sp-section {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+}
+
+.sp-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: var(--ss-radius-md);
+}
+
+.sp-nav[data-active] {
+  background: var(--sp-nav-active);
+}
+
+.sp-nav__label {
+  color: var(--ss-text-strong);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sp-nav__count {
+  margin-left: auto;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(184, 106, 20, 0.14);
+  color: var(--sp-warn);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Title bar ---- */
+
+.sp-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sp-crumbs__title {
+  color: var(--ss-text-strong);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sp-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--ss-radius-md);
+  background: var(--ss-canvas);
+}
+
+.sp-tab {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--ss-radius-sm);
+  color: var(--ss-text);
+  font-size: 12px;
+}
+
+.sp-tab[data-active] {
+  background: var(--ss-surface);
+  box-shadow: 0 0 0 1px var(--ss-line);
+  color: var(--ss-text-strong);
+  font-weight: 500;
+}
+
+.sp-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: var(--ss-radius-md);
+  box-shadow: inset 0 0 0 1px var(--ss-line);
+}
+
+/* ---- Body: list and conversation ---- */
+
+.sp-main {
+  background: var(--ss-surface);
+}
+
+.sp-body {
+  display: grid;
+  grid-template-columns: 352px minmax(0, 1fr);
+  height: 100%;
+}
+
+/* A drawn divider, so the rows and the pane's header meet on one line */
+.sp-pane {
+  box-shadow: inset 1px 0 0 var(--ss-line);
+}
+
+.sp-row {
+  border-bottom: 1px solid var(--ss-line);
+}
+
+.sp-row--story[data-selected] {
+  background: var(--sp-selected);
+  box-shadow: inset 2px 0 0 var(--ss-accent);
+}
+
+.sp-row__name {
+  color: var(--ss-text-strong);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.sp-row__time {
+  color: var(--ss-accent);
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+.sp-row__sub {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+.sp-row__subject {
+  color: var(--ss-text);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.sp-status {
+  padding-inline: 7px 8px;
+  font-size: 11.5px;
+}
+
+.sp-status[data-tone="success"] {
+  color: var(--sp-ok);
+}
+
+.sp-row__check {
+  --ss-check-on: var(--sp-ok);
+}
+
+/* ---- Conversation: two layers, the new ticket crossfading over the old ---- */
+
+.sp-pane {
+  position: relative;
+  min-width: 0;
+  background: #f8fafc;
+}
+
+.sp-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Kept on its own layer, so its text doesn't hop as the rise ends */
+  will-change: transform, opacity;
+}
+
+.sp-layer[data-on] {
+  opacity: 1;
+  transform: none;
+}
+
+/* The old ticket leaves a beat after the new one starts arriving, so the
+   pane is never empty during the handoff */
+.sp-layer:not([data-on]) {
+  transition-delay: 0.14s;
+}
+
+.sp-head {
+  display: grid;
+  gap: 6px;
+  padding: 18px calc(24px + var(--sp-bleed)) 16px 24px;
+  border-bottom: 1px solid var(--ss-line);
+  background: var(--ss-surface);
+}
+
+.sp-head__title {
+  color: var(--ss-text-strong);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.sp-head__meta {
+  color: var(--ss-text);
+  font-size: 12.5px;
+}
+
+.sp-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* The window runs 50px past the stage; the conversation's words end a full
+     gutter inside it, so only the pane's empty margin is cropped */
+  padding: 22px calc(24px + var(--sp-bleed)) 22px 24px;
+}
+
+.sp-msg {
+  display: grid;
+  gap: 10px;
+  max-width: 78%;
+  padding: 14px 16px;
+  border-radius: var(--ss-radius-lg);
+  background: var(--ss-surface);
+  box-shadow: 0 0 0 1px var(--ss-line);
+}
+
+.sp-msg__text {
+  color: var(--ss-text-strong);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.sp-msg--ai {
+  align-self: flex-end;
+  width: 78%;
+  background: var(--sp-ai);
+  box-shadow: 0 0 0 1px var(--sp-ai-line);
+}
+
+/* The new ticket's AI block arrives with the reading state, not before */
+.sp-layer .sp-msg--ai {
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform, opacity;
+}
+
+.sp-layer[data-on] .sp-msg--ai:not([data-on]) {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.sp-ai__head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.sp-ai__label {
+  color: var(--ss-accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sp-ai__sent {
+  color: var(--sp-ok);
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.sp-ai__sent[data-on] {
+  opacity: 1;
+}
+
+.sp-reading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ss-text);
+  font-size: 13px;
+}
+
+.sp-answer {
+  display: grid;
+  gap: 12px;
+}
+
+.sp-stream {
+  color: var(--ss-text-strong);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.sp-source {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--ss-surface);
+  box-shadow: inset 0 0 0 1px var(--sp-ai-line);
+  color: var(--ss-text-strong);
+  font-size: 12px;
+  /* Fades in where it rests: it sits under the answer it cites */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sp-source[data-on] {
+  opacity: 1;
+}
+
+.sp-rest {
+  flex: 1;
+  min-height: 40px;
+}
+
+/* ---- The satellite: the stat the story moves, over the sidebar ---- */
+
+.sp-stat {
+  position: absolute;
+  left: var(--gutter);
+  top: 392px;
+  width: 228px;
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: var(--ss-surface);
+  box-shadow: var(--ss-shadow-satellite);
+}
+
+.sp-stat__label {
+  color: var(--ss-text);
+  font-size: 12.5px;
+}
+
+.sp-stat__value {
+  --ss-count-unit-gap: 0;
+  color: var(--ss-text-strong);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ---- Compact: a second design for a phone column. The conversation alone:
+   its subject, then the AI's reply arriving. The window runs 30px past the
+   right edge and off the bottom, so what shows stays wider than tall; the
+   words end a gutter inside the stage. ---- */
+
+.sp-stage .ss-stage[data-layout="compact"] {
+  --gutter: 16px;
+  --sp-bleed: 30px;
+}
+
+.sp-stage .ss-stage[data-layout="compact"] .sp-window {
+  top: 16px;
+  left: 16px;
+  width: 372px;
+  height: 420px;
+}
+
+.sp-stage .ss-stage[data-layout="compact"] .sp-body {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sp-stage .ss-stage[data-layout="compact"] .sp-list,
+.sp-stage .ss-stage[data-layout="compact"] .sp-msg:not(.sp-msg--ai) {
+  display: none;
+}
+
+.sp-stage .ss-stage[data-layout="compact"] .sp-pane {
+  box-shadow: none;
+}
+
+.sp-stage .ss-stage[data-layout="compact"] .sp-head {
+  padding: 14px calc(16px + var(--sp-bleed)) 12px 16px;
+}
+
+.sp-stage .ss-stage[data-layout="compact"] .sp-thread {
+  padding: 16px calc(16px + var(--sp-bleed)) 16px 16px;
+}
+
+.sp-stage .ss-stage[data-layout="compact"] .sp-msg--ai {
+  align-self: stretch;
+  width: auto;
+  max-width: none;
+}

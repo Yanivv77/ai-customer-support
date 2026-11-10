@@ -1,5 +1,5 @@
 # Build the dashboard first, so the API image can serve it as static files.
-FROM node:24-slim AS dashboard
+FROM node:22-slim AS dashboard
 WORKDIR /dashboard
 COPY dashboard/package.json dashboard/package-lock.json ./
 RUN npm ci
